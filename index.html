@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đuổi Hình Bắt Chữ</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="game-container">
+      <h1>Đuổi Hình Bắt Chữ</h1>
+
+      <div id="puzzle-area">
+        <img
+          id="puzzle-image"
+          src=""
+          alt="Hình ảnh gợi ý"
+          style="width: 100%; max-width: 400px; display: none"
+        />
+        <p id="hint-text">Gợi ý: ...</p>
+      </div>
+
+      <div id="answer-area">
+        <div id="answer-slots"></div>
+      </div>
+
+      <div id="letter-bank"></div>
+
+      <div id="control-area">
+        <p id="message"></p>
+        <button id="next-level-btn" style="display: none">Màn Tiếp Theo</button>
+        <button id="hint-btn">Gợi ý (Trừ điểm)</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
