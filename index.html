@@ -3,36 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đuổi Hình Bắt Chữ</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Uốn lưỡi Bảy Lần</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="game-container">
-      <h1>Đuổi Hình Bắt Chữ</h1>
-
-      <div id="puzzle-area">
-        <img
-          id="puzzle-image"
-          src=""
-          alt="Hình ảnh gợi ý"
-          style="width: 100%; max-width: 400px; display: none"
-        />
-        <p id="hint-text">Gợi ý: ...</p>
+    <div class="container" id="app">
+      <div id="screen-menu">
+        <h1>Chọn Bộ Câu Hỏi</h1>
+        <p>Hệ thống đã chia ngẫu nhiên thành 6 bộ.</p>
+        <div class="grid-sets" id="sets-container"></div>
       </div>
 
-      <div id="answer-area">
-        <div id="answer-slots"></div>
-      </div>
+      <div id="screen-game" class="hidden">
+        <div class="topic-box">Chủ đề: <span id="topic"></span></div>
+        <div class="timer-box" id="timer">05:00</div>
+        <div class="score-display">
+          Điểm: <span id="current-score">0</span> | Câu:
+          <span id="question-count">1</span>/15
+        </div>
 
-      <div id="letter-bank"></div>
+        <div class="phrase-card" id="phrase-display">Đang tải...</div>
 
-      <div id="control-area">
-        <p id="message"></p>
-        <button id="next-level-btn" style="display: none">Màn Tiếp Theo</button>
-        <button id="hint-btn">Gợi ý (Trừ điểm)</button>
+        <div class="controls">
+          <button class="btn btn-skip" onclick="handleSkip()">Bỏ qua</button>
+          <button class="btn btn-score" onclick="handleScore()">
+            Tính điểm
+          </button>
+        </div>
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <div id="modal-result" class="hidden modal">
+      <div class="modal-content">
+        <h2>Hoàn Thành!</h2>
+        <p>
+          Tổng điểm:
+          <strong
+            id="final-score"
+            style="font-size: 2rem; color: var(--primary)"
+            >0</strong
+          >
+          / 15
+        </p>
+        <p>Thời gian: <span id="final-time">00:00</span></p>
+        <button
+          class="btn btn-set"
+          onclick="reset()"
+          style="margin-top: 20px"
+        >
+          Chơi Lại
+        </button>
+      </div>
+    </div>
+    <script src="./data.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
