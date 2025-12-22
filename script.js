@@ -1,14 +1,15 @@
-const topics = [
-  "Tình cảm Gia đình & Hiếu đạo",
-  "Học tập & Ý chí rèn luyện",
-  "Kinh nghiệm sản xuất & Thời tiết",
-  "Đạo đức & Nhân cách sống",
-  "Ứng xử xã hội & Đối nhân xử thế",
-  "Phê phán thói hư tật xấu (Châm biếm)",
-];
+const topics = {
+  0: "Tình cảm Gia đình & Hiếu đạo",
+  1: "Học tập & Ý chí rèn luyện",
+  2: "Kinh nghiệm sản xuất & Thời tiết",
+  3: "Đạo đức & Nhân cách sống",
+  4: "Ứng xử xã hội & Đối nhân xử thế",
+  5: "Phê phán thói hư tật xấu (Châm biếm)",
+};
+
+const groups = [group_1, group_2, group_3, group_4, group_5, group_6];
 
 // Biến toàn cục
-let sets = [];
 let currentSet = [];
 let currentPhraseIndex = 0;
 let score = 0;
@@ -27,19 +28,25 @@ function shuffle(array) {
 
 // Khởi tạo: 6 bộ câu hỏi
 function initGame() {
-  const source = [group_1, group_2, group_3, group_4, group_5, group_6]; // Bộ câu hỏi
+  const source = []; // Bộ câu hỏi
+
+  while (source.length < 6) {
+    const indexSource = Math.round(Math.random() * 100) % 6;
+    if (source.includes(indexSource)) continue;
+    source.push(indexSource);
+  }
+
   const container = document.getElementById("sets-container");
 
   // Chia thành 6 bộ (mỗi bộ 15)
   for (let i = 0; i < source.length; i++) {
-    sets.push(source[i]);
 
     // Tạo nút bấm trên giao diện
     const btn = document.createElement("button");
     btn.className = "btn-set";
     btn.innerText = `Bộ số ${i + 1}`;
     btn.onclick = () => {
-      startSet(i);
+      startSet(source[i]);
       btn.classList.add("disabled");
     };
     container.appendChild(btn);
@@ -48,7 +55,7 @@ function initGame() {
 
 // Bắt đầu chơi 1 bộ
 function startSet(setIndex) {
-  currentSet = sets[setIndex];
+  currentSet = groups[setIndex];
   currentPhraseIndex = 0;
   score = 0;
   timeLeft = 300;
