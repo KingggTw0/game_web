@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Uốn lưỡi Bảy Lần</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
     <div class="container" id="app">
+      <img src="./assets/logo.png" alt="logo" class="img-logo" />
+
       <div id="screen-menu">
         <h1>Chọn Bộ Câu Hỏi</h1>
         <p>Hệ thống đã chia ngẫu nhiên thành 6 bộ.</p>
@@ -46,11 +49,7 @@
           / 15
         </p>
         <p>Thời gian: <span id="final-time">00:00</span></p>
-        <button
-          class="btn btn-set"
-          onclick="reset()"
-          style="margin-top: 20px"
-        >
+        <button class="btn btn-set" onclick="reset()" style="margin-top: 20px">
           Chơi Lại
         </button>
       </div>
